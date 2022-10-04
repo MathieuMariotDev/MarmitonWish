@@ -27,6 +27,7 @@
             <div class="field d-flex flex-column align-items-start">
                 <label for="dificulty">difficulte</label>
                 <input id="dificulty" type="text" name="dificulty">
+
             </div>
             <div class="field d-flex flex-column align-items-start">
                 <label for="portion">portion</label>
@@ -40,7 +41,10 @@
                 <label for="preparation">preparation</label>
                 <input id="preparation" type="text" name="preparation">
             </div>
+
             <button class="bg-primary mt-3 mb-3 rounded" type="submit">Create</button>
+
+
         </form>
 
     </div>

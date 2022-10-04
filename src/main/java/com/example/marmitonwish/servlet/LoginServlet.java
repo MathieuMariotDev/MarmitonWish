@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
             rd.forward(req, resp);
         } else if (user.get().getMdp().equals(mdp)) {
             HttpSession session = req.getSession();
-            session.setAttribute("user", user);
+            session.setAttribute("user", user.get());
 
             resp.getWriter().println(session.getAttribute("user"));
             resp.sendRedirect(req.getContextPath() + "/#");

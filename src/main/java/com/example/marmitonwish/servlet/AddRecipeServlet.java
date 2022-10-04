@@ -46,7 +46,7 @@ public class AddRecipeServlet extends HttpServlet {
           LocalDateTime localDate = LocalDateTime.now();
           resp.getWriter().println(localDate);
 
-          Recipe recipe = new Recipe(recipeName, timeToPrepare, dificulty, portion, price, localDate, preparation, user);
+          Recipe recipe = new Recipe(recipeName, timeToPrepare, dificulty, portion, price, localDate, preparation, user );
 
 
           DaoFactory.getRecipeDao().addRecipe(recipe);
