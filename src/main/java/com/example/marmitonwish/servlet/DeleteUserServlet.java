@@ -44,8 +44,5 @@ public class DeleteUserServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/error");
             req.setAttribute("error_format_id", true);
         }
-
-
-
     }
 }

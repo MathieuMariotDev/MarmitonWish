@@ -57,6 +57,6 @@ public class EditUserFile extends HttpServlet {
            req.setAttribute("user_not_found", true);
        }
 
-        resp.sendRedirect(req.getContextPath()+"/showProfile");
+        resp.sendRedirect(req.getContextPath()+"/detailsUser");
     }
 }

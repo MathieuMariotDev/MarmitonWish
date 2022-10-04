@@ -11,30 +11,31 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/add_user")
-public class AddUserServlet extends HttpServlet {
+@WebServlet("/addIngredients")
+public class AddIngredients extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/addUserForm.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/addIngredientsForm.jsp");
         rd.forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userName = req.getParameter("name");
-        String firstname = req.getParameter("firstName");
+        String ingredientName = req.getParameter("ingredientName");
+        String ingredientsPhoto = req.getParameter("ingredientsPhoto");
         // mot de passe a hashe pour la securite
-        String mdp = req.getParameter("password");
-        String email = req.getParameter("email");
-        String photo = req.getParameter("photo");
 
-        User user = new User(userName,firstname,mdp,email,photo);
+        try{
+            Ingredient ingredient = new Ingredient(ingredientsPhoto,ingredientName);
+            DaoFactory.getIngredientDao().addIngredient(ingredient);
 
+            resp.sendRedirect(req.getContextPath()+"/ingredients");
+        }catch(Exception e){
+            resp.sendRedirect(req.getContextPath() + "/error");
+            req.setAttribute("error_format_id", true);
+        }
 
-        DaoFactory.getUserDao().addUser(user);
-
-        resp.sendRedirect(req.getContextPath()+"/detailsUser");
 
 
     }
