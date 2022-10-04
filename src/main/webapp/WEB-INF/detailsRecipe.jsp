@@ -22,6 +22,10 @@
                         <p>Difficulté : ${requestScope.recipe.dificulty}</p>
                         <p>Portion : ${requestScope.recipe.portion}</p>
                         <p>Prix : ${requestScope.recipe.price}</p>
+                        <p>Date de création : ${requestScope.recipe.createDate}</p>
+                        <p>Ingrédients : ${requestScope.recipe.recipeIngredients}</p>
+                        <p>Préparation : ${requestScope.recipe.preparation}</p>
+                        <p>Auteur : ${requestScope.recipe.user}</p>
                     </div>
 
                 </div>
