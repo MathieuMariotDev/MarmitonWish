@@ -16,7 +16,7 @@ public class EditUserFile extends HttpServlet {
         User user =  Daofactory.getUserDAO().findById(id);
 
         req.setAttribute("user",user);
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/EditUserForm.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/editUserForm.jsp");
         rd.forward(req,resp);
     }
 
