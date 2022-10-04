@@ -11,12 +11,12 @@
     <%--methode post--%>
     <form action="${pageContext.request.contextPath}/deleteUser" method="post">
         <input hidden value="${requestScope.idUser}" name="id">
-        <button type="submit">Yes</button>
+        <button type="submit">Oui</button>
     </form>
 
     <%--methode get - redirection--%>
     <form action="${pageContext.request.contextPath}/#" method="get">
-        <button type="submit">No</button>
+        <button type="submit">Non</button>
     </form>
 
 </body>

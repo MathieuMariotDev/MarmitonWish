@@ -19,14 +19,14 @@
             <div class="card-text">
               <p>${requestScope.user.name}</p>
               <p>${requestScope.user.firstname}</p>
-              <img src=""> <%--photo--%>
+              <img src="#"> <%--photo--%>
               <p>${requestScope.user.mdp}</p>
             </div>
 
               <%--delete--%>
               <form action="${pageContext.request.contextPath}/deleteUser" method="post">
                 <input hidden name="idUser" value="${requestScope.user.id}">
-                <button class="btn btn-secondary" type="submit">Delete</button>
+                <button class="btn btn-secondary" type="submit">Supprimer profil</button>
               </form>
             </div>
 
