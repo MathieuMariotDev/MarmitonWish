@@ -1,6 +1,7 @@
 package com.example.marmitonwish.servlet;
 
 import com.example.marmitonwish.jpa.DaoFactory;
+import com.example.marmitonwish.jpa.entity.Recipe;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

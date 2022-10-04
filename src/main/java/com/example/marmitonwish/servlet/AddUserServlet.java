@@ -34,7 +34,7 @@ public class AddUserServlet extends HttpServlet {
 
         DaoFactory.getUserDao().addUser(user);
 
-        resp.sendRedirect(req.getContextPath()+"/detailsUser");
+        resp.sendRedirect(req.getContextPath()+"/detailsUser?id="+user.getId());
 
 
     }

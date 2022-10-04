@@ -17,7 +17,7 @@ public class AuthenticateFilter implements Filter {
         HttpServletResponse httpResp = (HttpServletResponse) servletResponse;
         HttpServletRequest httpReq = (HttpServletRequest) servletRequest;
 
-        Object user = httpReq.getSession().getAttribute("username");
+        Object user = httpReq.getSession().getAttribute("user");
 
         if (user != null) {
             filterChain.doFilter(httpReq, httpResp);
