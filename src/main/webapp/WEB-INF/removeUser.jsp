@@ -8,17 +8,24 @@
     <link rel="stylesheet" href="<c:url value='/css/style.css' />"/>
 </head>
 <body>
-<div class="container-fluid row d-flex justify-content-center">
-    <p>Voulez-vous vraiment supprimer votre profil ?</p>
-    <%--methode post--%>
-    <form action="${pageContext.request.contextPath}/deleteUser" method="post">
-        <input hidden value="${requestScope.idUser}" name="id">
-        <button type="submit">Oui</button>
-    </form>
-    <%--methode get - redirection--%>
-    <form action="${pageContext.request.contextPath}/#" method="get">
-        <button type="submit">Non</button>
-    </form>
-</div>
+    <div class="container-fluid row d-flex justify-content-center">
+        <jsp:include page="header.jsp"></jsp:include>
+        <p class="d-flex justify-content-center">Voulez-vous vraiment supprimer votre profil ?</p>
+            <div class=" col-2 d-flex justify-content-between align-items-center">
+        <%--methode post--%>
+        <form action="${pageContext.request.contextPath}/deleteUser" method="post">
+            <input hidden value="${requestScope.idUser}" name="id">
+            <button type="submit">Oui</button>
+        </form>
+        <%--methode get - redirection--%>
+        <form action="${pageContext.request.contextPath}/#" method="get">
+            <button type="submit">Non</button>
+        </form>
+       </div>
+        <jsp:include page="footer.jsp"></jsp:include>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
 </body>
 </html>
