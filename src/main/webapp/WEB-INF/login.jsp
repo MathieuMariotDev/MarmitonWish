@@ -3,24 +3,41 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous" defer></script>
+
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/style/style.css">
+
 
 <html>
 <head>
     <title>Login</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
-    <div class="container">
+<div id="loginTitle">
+    <h2 class="text-center">CONNEXION</h2>
+</div>
+
+<div class="container-fluid">
+
+    <div class = "d-flex justify-content-center align-items-center">
 
         <form action="${pageContext.request.contextPath}/login" method="post">
-
-            <label for="username">User</label>
-            <input id="username" type="text" name="username">
-
-            <button type="submit">Log in</button>
+            <div class="col-10 form-group">
+                <label for="email"></label>
+                <input class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="col-10 form-group">
+                <label for="mdp"></label>
+                <input class="form-control" id="mdp" name="mdp" placeholder="Mot de passe" type="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
 
     </div>
+
+</div>
 
 </body>
 </html>

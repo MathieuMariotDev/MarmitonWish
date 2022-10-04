@@ -1,4 +1,4 @@
-package com.example.app.filter;
+package com.example.marmitonwish.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
