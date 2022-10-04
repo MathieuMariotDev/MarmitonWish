@@ -1,20 +1,22 @@
-package com.example.marmitonwish.jpa;
+package com.example.marmitonwish.jpa.dao;
 
+import com.example.marmitonwish.jpa.PersistenceManager;
+import com.example.marmitonwish.jpa.entity.Recipe;
 import com.example.marmitonwish.jpa.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
 
 import java.util.List;
 import java.util.Optional;
 
-public class UserDao implements JpaUserDao {
+public class JpaRecipeDao implements RecipeDao{
+
     @Override
-    public List<User> findAll() {
+    public List<Recipe> findAll() {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         try {
-            List<User> users = em.createQuery("SELECT u FROM user u",User.class).getResultList();
-            return users;
+            List<Recipe> recipes = em.createQuery("SELECT u FROM recipe u",Recipe.class).getResultList();
+            return recipes;
         }catch (RuntimeException re){
             // TODO
         }finally {
@@ -24,12 +26,12 @@ public class UserDao implements JpaUserDao {
     }
 
     @Override
-    public boolean addUser(User user) {
+    public boolean addRecipe(Recipe recipe) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
         try {
-            em.persist(user);
+            em.persist(recipe);
             et.commit();
             return true;
         }catch (RuntimeException re){
@@ -44,13 +46,13 @@ public class UserDao implements JpaUserDao {
     }
 
     @Override
-    public boolean deleteUser(long id) {
+    public boolean deleteRecipe(long id) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
         try {
-            User user = em.find(User.class,id);
-            em.remove(user);
+            Recipe recipe = em.find(Recipe.class,id);
+            em.remove(recipe);
             et.commit();
             return true;
         }catch (RuntimeException re){
@@ -64,12 +66,12 @@ public class UserDao implements JpaUserDao {
     }
 
     @Override
-    public boolean updateUser(User user) {
+    public boolean updateRecipe(Recipe recipe) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
         try {
-            em.merge(user);
+            em.merge(recipe);
             et.commit();
             return true;
         }catch (RuntimeException re){
@@ -83,29 +85,14 @@ public class UserDao implements JpaUserDao {
     }
 
     @Override
-    public Optional<User> getUserById(long id) {
+    public Optional<Recipe> getRecipeById(long id) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         try {
-            Optional<User> user = Optional.of(em.find(User.class,id));
-            return user;
+            Optional<Recipe> recipe = Optional.of(em.find(Recipe.class,id));
+            return recipe;
         }catch (RuntimeException re){
             // todo
-        }finally {
-            em.close();
-        }
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<User> getUserByEmail(String email) {
-        EntityManager em = PersistenceManager.getEMF().createEntityManager();
-        try {
-            Query query = em.createQuery("select m from user m WHERE m.email = :email");
-            query.setParameter("email",email);
-            Optional<User> user = Optional.of((User)query.getSingleResult());
-            return user;
-        }catch (RuntimeException re){
-            // todo
+            re.printStackTrace();
         }finally {
             em.close();
         }

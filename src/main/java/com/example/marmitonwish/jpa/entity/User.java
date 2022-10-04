@@ -1,9 +1,8 @@
 package com.example.marmitonwish.jpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity(name="user")
 public class User {
@@ -81,4 +80,8 @@ public class User {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    @OneToMany(mappedBy = "user")
+    List<CookedRecipe> cookedRecipes;
+
 }

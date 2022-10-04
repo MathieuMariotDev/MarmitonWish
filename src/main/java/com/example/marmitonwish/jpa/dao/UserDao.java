@@ -1,11 +1,11 @@
-package com.example.marmitonwish.jpa;
+package com.example.marmitonwish.jpa.dao;
 
 import com.example.marmitonwish.jpa.entity.User;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface JpaUserDao {
+public interface UserDao {
 
     List<User> findAll();
 
@@ -18,6 +18,5 @@ public interface JpaUserDao {
     Optional<User> getUserById(long id);
 
     Optional<User> getUserByEmail(String email);
-
 
 }

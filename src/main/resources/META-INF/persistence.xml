@@ -11,9 +11,8 @@
             <property name="jakarta.persistence.jdbc.password" value="0123"/>
             <property name="jakarta.persistence.jdbc.url"
                       value="jdbc:mysql://localhost:3307/marmitonwish"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
         </properties>
-
     </persistence-unit>
 </persistence>
