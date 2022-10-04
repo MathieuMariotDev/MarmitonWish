@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
-@WebServlet("/edit_user")
+@WebServlet("/auth/edit_user")
 public class EditUserFile extends HttpServlet {
 
     @Override

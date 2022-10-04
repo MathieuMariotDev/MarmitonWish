@@ -9,7 +9,11 @@ target/
 .idea/compiler.xml
 .idea/libraries/
 .idea/
+
 src/main/resources/META-INF/persistence.xml
+
+
+
 
 *.iws
 *.iml
