@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 @WebServlet("/edit_user")
@@ -17,27 +19,44 @@ public class EditUserFile extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/EditUserForm.jsp");
+        try{
+            long id = Long.parseLong(req.getParameter("id"));
+            Optional<User> user =  DaoFactory.getUserDao().getUserById(id);
+            req.setAttribute("user",user.get());
+        }catch (NumberFormatException | NoSuchElementException e){
+            resp.sendRedirect(req.getContextPath() + "/error");
+            req.setAttribute("user_not_found", true);
+        }
+
+
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/editUserForm.jsp");
         rd.forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userName = req.getParameter("newName");
-        String firstname = req.getParameter("newFirstName");
-        // mot de passe a hashe pour la securite
-        String mdp = req.getParameter("newPassword");
-        String email = req.getParameter("newEmail");
-        String photo = req.getParameter("urlPicture");
+       try{
+           long id = Long.parseLong(req.getParameter("userId"));
+           Optional<User> userOptional = DaoFactory.getUserDao().getUserById(id);
+           User user = userOptional.get();
 
-
-        User user = new User(userName,firstname,mdp,email,photo);
-
-        DaoFactory.getUserDao().updateUser(user);
-
+           String userName = req.getParameter("newName");
+           String firstname = req.getParameter("newFirstName");
+           // mot de passe a hashe pour la securite
+           String mdp = req.getParameter("newPassword");
+           String email = req.getParameter("newEmail");
+           String photo = req.getParameter("newUrlPicture");
+           user.setName(userName);
+           user.setFirstname(firstname);
+           user.setEmail(email);
+           user.setMdp(mdp);
+           user.setPhoto(photo);
+           DaoFactory.getUserDao().updateUser(user);
+       }catch (NumberFormatException | NoSuchElementException e){
+           resp.sendRedirect(req.getContextPath() + "/error");
+           req.setAttribute("user_not_found", true);
+       }
 
         resp.sendRedirect(req.getContextPath()+"/showProfile");
-
-
     }
 }

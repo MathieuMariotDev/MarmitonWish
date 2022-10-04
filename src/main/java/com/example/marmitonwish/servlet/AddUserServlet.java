@@ -28,7 +28,9 @@ public class AddUserServlet extends HttpServlet {
         String mdp = req.getParameter("password");
         String email = req.getParameter("email");
         String photo = req.getParameter("photo");
+
         User user = new User(userName,firstname,mdp,email,photo);
+
 
         DaoFactory.getUserDao().addUser(user);
 
