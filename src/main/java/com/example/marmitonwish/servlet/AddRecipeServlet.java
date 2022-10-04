@@ -20,14 +20,6 @@ public class AddRecipeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try{
-            long id = Long.parseLong(req.getParameter("id"));
-            Optional<Recipe> recipe =  DaoFactory.getRecipeDao().getRecipeById(id);
-            req.setAttribute("recipe",recipe.get());
-        }catch (NumberFormatException | NoSuchElementException e){
-            resp.sendRedirect(req.getContextPath() + "/error");
-            req.setAttribute("recipe_not_found", true);
-        }
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/editUserForm.jsp");
         rd.forward(req,resp);
     }

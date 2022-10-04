@@ -1,6 +1,7 @@
 package com.example.marmitonwish.servlet;
 
 import com.example.marmitonwish.jpa.DaoFactory;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +22,9 @@ public class EditRecipeServlet extends HttpServlet {
             req.setAttribute("recipe",recipe.get());
         }catch (NumberFormatException | NoSuchElementException e){
             resp.sendRedirect(req.getContextPath() + "/error");
-            req.setAttribute("user_not_found", true);
+            req.setAttribute("recipe_not_found", true);
         }
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/editUserForm.jsp");
+        rd.forward(req,resp);
     }
 }
