@@ -33,7 +33,7 @@
               </form>
             --%>
 
-              <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${recipe.id}" class="btn btn-success">Details</a>
+              <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${recipe.id}" class="btn btn-success">Détails</a>
             </div>
 
 
