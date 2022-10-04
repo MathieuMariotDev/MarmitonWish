@@ -1,3 +1,5 @@
+import com.example.marmitonwish.jpa.DaoFactory;
+import com.example.marmitonwish.jpa.entity.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("edit_ser")
+@WebServlet("/edit_user")
 public class EditUserFile extends HttpServlet {
 
     @Override
@@ -24,9 +26,10 @@ public class EditUserFile extends HttpServlet {
         String mdp = req.getParameter("newPassword");
         String email = req.getParameter("newEmail");
         String photo = req.getParameter("urlPicture");
-        User user = new user(userName,firstname,mdp,email,photo);
 
-        Daofactory.getUserDAO().create(user);
+        User user = new User(userName,firstname,mdp,email,photo);
+
+        DaoFactory.getUserDao().updateUser(user);
 
         resp.sendRedirect(req.getContextPath()+"/showProfile");
 
