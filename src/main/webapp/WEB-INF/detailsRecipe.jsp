@@ -23,7 +23,10 @@
                         <p>Portion : ${requestScope.recipe.portion}</p>
                         <p>Prix : ${requestScope.recipe.price}</p>
                         <p>Date de création : ${requestScope.recipe.createDate}</p>
-                        <p>Ingrédients : ${requestScope.recipe.recipeIngredients}</p>
+                        <p>Ingrédients :</p>
+                        <%--<c:forEach items="${requestScope.recipe.recipeIngredients}" var="ingredients">
+                            <p>${ingredients.}</p>
+                        </c:forEach>--%> <%--a completer > RecipeIngredient puis Ingredient--%>
                         <p>Préparation : ${requestScope.recipe.preparation}</p>
                         <p>Auteur : ${requestScope.recipe.user}</p>
                     </div>
