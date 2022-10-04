@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("add_user")
+@WebServlet("/add_user")
 public class AddUserServlet extends HttpServlet {
 
     @Override
@@ -19,7 +19,7 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userName = req.getParameter("name");
-        String firstname = req.getParameter("firstname");
+        String firstname = req.getParameter("firstName");
         // mot de passe a hashe pour la securite
         String mdp = req.getParameter("password");
         String email = req.getParameter("email");

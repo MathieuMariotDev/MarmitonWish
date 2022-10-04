@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("edit_ser")
+@WebServlet("/edit_ser")
 public class EditUserFile extends HttpServlet {
 
     @Override
@@ -26,7 +26,7 @@ public class EditUserFile extends HttpServlet {
         String photo = req.getParameter("urlPicture");
         User user = new user(userName,firstname,mdp,email,photo);
 
-        Daofactory.getUserDAO().create(user);
+        Daofactory.getUserDAO().edit(user);
 
         resp.sendRedirect(req.getContextPath()+"/showProfile");
 
