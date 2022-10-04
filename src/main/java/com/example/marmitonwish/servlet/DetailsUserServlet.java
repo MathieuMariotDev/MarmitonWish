@@ -1,5 +1,7 @@
-package com.example.marmitonwish;
+package com.example.marmitonwish.servlet;
 
+import com.example.marmitonwish.jpa.DaoFactory;
+import com.example.marmitonwish.jpa.entity.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @WebServlet("/detailsUser")
@@ -19,16 +22,13 @@ public class DetailsUserServlet extends HttpServlet {
 
         try {
             long idUser = Long.parseLong(idStr);
-            Optional<User> userOptional = DaoFactory.getUserDAO().findById(idUser);
+            Optional<User> userOptional = DaoFactory.getUserDao().getUserById(idUser);
+            req.setAttribute("user", userOptional.get());
 
-            if (userOptional.isPresent()) {
-                req.setAttribute("user", userOptional.get());
-            }
 
-        } catch (NumberFormatException e) {
-            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/removeUser.jsp");
-            req.setAttribute("error_format_id", true);
-            rd.forward(req, resp);
+        } catch (NumberFormatException | NoSuchElementException e) {
+            resp.sendRedirect(req.getContextPath() + "/error");
+            req.setAttribute("user_not_found", true);
         }
 
 

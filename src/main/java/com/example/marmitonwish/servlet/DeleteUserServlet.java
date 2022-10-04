@@ -1,5 +1,6 @@
-package com.example.marmitonwish;
+package com.example.marmitonwish.servlet;
 
+import com.example.marmitonwish.jpa.DaoFactory;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,13 +15,14 @@ public class DeleteUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String idStr = req.getParameter("idUser");
+        String idStr = req.getParameter("id");
 
         try {
             long id = Long.parseLong(idStr);
             req.setAttribute("idUser", id);
 
         } catch (NumberFormatException e) {
+            resp.sendRedirect(req.getContextPath() + "/error");
             req.setAttribute("error_format_id", true);
         }
 
@@ -30,18 +32,20 @@ public class DeleteUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String idStr = req.getParameter("idUser");
+        String idStr = req.getParameter("id");
 
         try {
             long idUser = Long.parseLong(idStr);
-            DaoFactory.getUserDAO().delete(idUser);
+            DaoFactory.getUserDao().deleteUser(idUser);
 
-            resp.sendRedirect(req.getContextPath() + "#"); // a completer
+            resp.sendRedirect(req.getContextPath() + "#"); // a completer //TODO
 
         } catch (NumberFormatException e) {
-            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/removeUser.jsp");
+            resp.sendRedirect(req.getContextPath() + "/error");
             req.setAttribute("error_format_id", true);
-            rd.forward(req, resp);
         }
+
+
+
     }
 }

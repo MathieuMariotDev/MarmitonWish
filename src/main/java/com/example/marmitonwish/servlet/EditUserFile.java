@@ -1,3 +1,5 @@
+package com.example.marmitonwish.servlet;
+
 import com.example.marmitonwish.jpa.DaoFactory;
 import com.example.marmitonwish.jpa.entity.User;
 import jakarta.servlet.RequestDispatcher;
