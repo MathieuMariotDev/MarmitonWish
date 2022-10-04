@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+
 @WebServlet("/edit_user")
 public class EditUserFile extends HttpServlet {
 
@@ -27,9 +28,11 @@ public class EditUserFile extends HttpServlet {
         String email = req.getParameter("newEmail");
         String photo = req.getParameter("urlPicture");
 
+
         User user = new User(userName,firstname,mdp,email,photo);
 
         DaoFactory.getUserDao().updateUser(user);
+
 
         resp.sendRedirect(req.getContextPath()+"/showProfile");
 
