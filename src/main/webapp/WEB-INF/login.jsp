@@ -23,6 +23,8 @@
 
     <div class = "d-flex justify-content-center align-items-center">
 
+
+
         <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="col-10 form-group">
                 <label for="email"></label>
@@ -33,6 +35,18 @@
                 <input class="form-control" id="mdp" name="mdp" placeholder="Mot de passe" type="password">
             </div>
             <button type="submit" class="btn btn-primary">Connexion</button>
+
+            <c:if test="${not empty requestScope.error_email}">
+            <div class="alert alert-danger" role="alert">
+                Email invalide
+            </div>
+            </c:if>
+
+            <c:if test="${not empty requestScope.error_password}">
+            <div class="alert alert-danger" role="alert">
+                Mot de passe invalide
+            </div>
+            </c:if>
         </form>
 
     </div>

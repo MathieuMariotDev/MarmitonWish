@@ -52,11 +52,15 @@ public class LoginServlet extends HttpServlet {
                     resp.sendRedirect(req.getContextPath() + "/#");
 
                 } else {
-                    // TODO incorrect password
+                    req.setAttribute("error_password", "Mot de passe invalide");
+                    RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/login.jsp");
+                    rd.forward(req, resp);
                 }
 
             } else {
-                // TODO connexion failed
+                req.setAttribute("error_email", "Email invalide");
+                RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/login.jsp");
+                rd.forward(req, resp);
             }
 
         } catch (Exception e) {
