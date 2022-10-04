@@ -15,27 +15,27 @@
 
   <div class="row d-flex justify-content-center " >
 
-    <form  class=" col-3 mb-5 mt-5 bg-white d-flex flex-column align-items-center  border border-secondary rounded" action="${pageContext.request.contextPath}/edit_user" method="POST">
+    <form  class=" col-3 mb-5 mt-5 bg-white d-flex flex-column align-items-center  border border-secondary rounded" action="${pageContext.request.contextPath}/auth/edit_user" method="POST">
       <div class="field d-flex flex-column align-items-start">
         <input hidden name="userId" value="${user.id}">
-        <label for="newName">nom </label>
-        <input id="newName" type="text" value="${user.name}" name="newName">
+        <label for="newName"> </label>
+        <input id="newName" type="text" value="${user.name}" name="newName" placeholder="nom">
       </div>
       <div class="field d-flex flex-column align-items-start">
-        <label for="newFirstName">prenom</label>
-        <input id="newFirstName" type="text" value="${user.firstname}"  name="newFirstName">
+        <label for="newFirstName"></label>
+        <input id="newFirstName" type="text" value="${user.firstname}"  name="newFirstName" placeholder="prenom">
       </div>
       <div class="field d-flex flex-column align-items-start">
-        <label for="email">email</label>
-        <input id="email" type="text" value="${user.email}" name="newEmail">
+        <label for="email"></label>
+        <input id="email" type="text" value="${user.email}" name="newEmail" placeholder="email">
       </div>
       <div class="field d-flex flex-column align-items-start">
-        <label for="newUrlPicture">photo</label>
-        <input id="newUrlPicture" type="text" value="${user.photo}" name="newUrlPicture">
+        <label for="newUrlPicture"></label>
+        <input id="newUrlPicture" type="text" value="${user.photo}" name="newUrlPicture" placeholder="photo">
       </div>
       <div class="field d-flex flex-column align-items-start">
-        <label for="newMdp">mot de passe</label>
-        <input id="newMdp" type="password" value="${user.mdp}" name="newPassword">
+        <label for="newMdp"></label>
+        <input id="newMdp" type="password" value="${user.mdp}" name="newPassword" placeholder="mot de passe">
       </div>
       <button class="bg-primary mt-3 mb-3 rounded" type="submit">edit</button>
     </form>

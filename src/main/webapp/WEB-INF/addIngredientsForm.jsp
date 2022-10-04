@@ -17,12 +17,12 @@
 
     <form  class=" col-3 mb-5 mt-5 bg-white d-flex flex-column align-items-center  border border-secondary rounded" action="${pageContext.request.contextPath}/addIngredients" method="POST">
       <div class="field d-flex flex-column align-items-start">
-        <label for="ingredientName">nom </label>
-        <input id="ingredientName" type="text" name="ingredientName">
+        <label for="ingredientName"> </label>
+        <input id="ingredientName" type="text" name="ingredientName"  placeholder="nom">
       </div>
       <div class="field d-flex flex-column align-items-start">
-        <label for="ingredientsPhoto">photo</label>
-        <input id="ingredientsPhoto" type="text" name="ingredientsPhoto">
+        <label for="ingredientsPhoto"></label>
+        <input id="ingredientsPhoto" type="text" name="ingredientsPhoto" placeholder="photo">
       </div>
       <button class="bg-primary mt-3 mb-3 rounded" type="submit">Create</button>
     </form>
