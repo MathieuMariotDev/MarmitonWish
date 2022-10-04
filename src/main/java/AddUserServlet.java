@@ -23,7 +23,7 @@ public class AddUserServlet extends HttpServlet {
         // mot de passe a hashe pour la securite
         String mdp = req.getParameter("password");
         String email = req.getParameter("email");
-        String photo = req.getParameter("urlPicture");
+        String photo = req.getParameter("photo");
         User user = new user(userName,firstname,mdp,email,photo);
 
         Daofactory.getUserDAO().create(user);

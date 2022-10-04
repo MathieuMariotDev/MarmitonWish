@@ -15,8 +15,7 @@
 
   <div class="row d-flex justify-content-center " >
 
-    <form  class=" col-3 mb-5 mt-5 bg-white d-flex flex-column align-items-center  border border-secondary rounded" action="${pageContext.request.contextPath}/addCountry" method="POST">
-
+    <form  class=" col-3 mb-5 mt-5 bg-white d-flex flex-column align-items-center  border border-secondary rounded" action="${pageContext.request.contextPath}/add_user" method="POST">
       <div class="field d-flex flex-column align-items-start">
         <label for="name">nom </label>
         <input id="name" type="text" name="name">
@@ -37,13 +36,14 @@
         <label for="mdp">mot de passe</label>
         <input id="mdp" type="password" name="password">
       </div>
+      <input hidden name="id" value="${country.id}">
       <button class="bg-primary mt-3 mb-3 rounded" type="submit">Create</button>
     </form>
 
   </div>
 
 </div>
-<jsp:include page="footer.jsp"></jsp:include>
+<
 
 </body>
 </html>
