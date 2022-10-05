@@ -1,11 +1,15 @@
 package com.example.marmitonwish.jpa.entity;
 
+import com.example.marmitonwish.model.CookedRecipeDto;
+import com.example.marmitonwish.model.RecipeDto;
+import com.example.marmitonwish.model.RecipeIngredientDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity(name="recipe")
 public class Recipe {
@@ -50,6 +54,15 @@ public class Recipe {
         this.user = user;
     }
 
+    public RecipeDto RecipeToDto(){
+        this.cookedRecipes.forEach(cookedRecipe -> cookedRecipe.cookedRecipeToDto());
+        List<CookedRecipeDto> cookedRecipeListDto = cookedRecipes.stream().map(cookedRecipe -> cookedRecipe.cookedRecipeToDto()).collect(Collectors.toList());
+        List<RecipeIngredientDto> recipeIngredientDtoList = this.recipeIngredients.stream().map(recipeIngredient -> recipeIngredient.recipeIngredientToDto()).collect(Collectors.toList());
+        RecipeDto dto = new RecipeDto(this.id,this.recipeName,this.timeToPrepare,this.dificulty,this.portion,this.price,this.category,this.createDate,this.category,this.user,cookedRecipeListDto,recipeIngredientDtoList);
+        return dto;
+    }
+
+
     LocalDateTime createDate;
 
     @Lob
@@ -59,7 +72,7 @@ public class Recipe {
     @ManyToOne
     User user;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe",fetch=FetchType.EAGER)
     List<CookedRecipe> cookedRecipes = new ArrayList<>();
 
 

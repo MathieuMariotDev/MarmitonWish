@@ -2,9 +2,9 @@ package com.example.marmitonwish.api;
 
 
 import com.example.marmitonwish.jpa.DaoFactory;
-import com.example.marmitonwish.jpa.dao.JpaRecipeDao;
 import com.example.marmitonwish.jpa.dao.RecipeDao;
 import com.example.marmitonwish.jpa.entity.Recipe;
+import com.example.marmitonwish.model.RecipeDto;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -14,6 +14,7 @@ import jakarta.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Path("/recipes")
 public class RecipeRessource {
@@ -29,18 +30,20 @@ public class RecipeRessource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<Recipe> recipeList = DaoFactory.getRecipeDao().findAll();
-        return Response.ok(recipeList).build();
+        List<RecipeDto> recipeDtos = recipeList.stream().map(recipe -> recipe.RecipeToDto()).collect(Collectors.toList());
+        return Response.ok(recipeDtos).build();
     }
 
     @GET
-    @Path("/{islandId}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getIslandById(@PathParam("islandId") long idParam) {
+    public Response getIslandById(@PathParam("id") long idParam) {
         Optional<Recipe> optionalIsland = recipeDao.getRecipeById(idParam);
 
         if (optionalIsland.isPresent()) {
-            return Response.ok(optionalIsland.get()).build();
+            RecipeDto recipeDto = optionalIsland.get().RecipeToDto();
+            return Response.ok(recipeDto).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -70,12 +73,20 @@ public class RecipeRessource {
     @Path("/{islandId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("islandId") long idParam, Recipe dto) {
+    public Response update(@PathParam("islandId") long idParam, Recipe recipe) {
         Optional<Recipe> optionalRecipe = recipeDao.getRecipeById(idParam);
+
         if (optionalRecipe.isPresent()) {
-            new JpaRecipeDao().updateRecipe(new Recipe( dto.getRecipeName(), dto.getTimeToPrepare(), dto.getPreparation(),
-                    dto.getPortion(), dto.getPrice(), dto.getCreateDate(),dto.getPreparation(),dto.getCategory(),
-                    dto.getUser()));
+            optionalRecipe.get().setRecipeName(recipe.getRecipeName());
+            optionalRecipe.get().setDificulty(recipe.getDificulty());
+            optionalRecipe.get().setRecipeIngredients(recipe.getRecipeIngredients());
+            optionalRecipe.get().setCookedRecipes(recipe.getCookedRecipes());
+            optionalRecipe.get().setTimeToPrepare(recipe.getTimeToPrepare());
+            optionalRecipe.get().setPrice(recipe.getPrice());
+            optionalRecipe.get().setPortion(recipe.getPortion());
+            optionalRecipe.get().setPreparation(recipe.getPreparation());
+            optionalRecipe.get().setCategory(recipe.getCategory());
+            recipeDao.updateRecipe(optionalRecipe.get()); // TODO
             return getAll();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -87,7 +98,7 @@ public class RecipeRessource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{islandId}")
     public Response delete(@PathParam("islandId") long idParam) {
-        new JpaRecipeDao().deleteRecipe(idParam);
+        recipeDao.deleteRecipe(idParam);
         return Response.noContent().build();
     }
 

@@ -1,5 +1,6 @@
 package com.example.marmitonwish.jpa.entity;
 
+import com.example.marmitonwish.model.RecipeIngredientDto;
 import jakarta.persistence.*;
 
 @Entity(name="recipe_ingredient")
@@ -76,4 +77,11 @@ public class RecipeIngredient {
     public void setUnite(String unite) {
         this.unite = unite;
     }
+
+    public RecipeIngredientDto recipeIngredientToDto(){
+        RecipeIngredientDto recipeIngredientDto = new RecipeIngredientDto(this.id,this.quantity,this.unite);
+        return recipeIngredientDto;
+    }
+
+
 }
