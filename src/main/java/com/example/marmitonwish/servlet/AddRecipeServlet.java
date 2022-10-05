@@ -49,13 +49,14 @@ public class AddRecipeServlet extends HttpServlet {
           Recipe recipe = new Recipe(recipeName, timeToPrepare, dificulty, portion, price, localDate, preparation,null, user );
 
 
+
           DaoFactory.getRecipeDao().addRecipe(recipe);
+          resp.sendRedirect(req.getContextPath() + "/addIngredientToRecipe?id="+recipe.getId());
       }catch(Exception e){
           resp.sendRedirect(req.getContextPath() + "/error");
           req.setAttribute("error_format_id", true);
         }
 
-        resp.sendRedirect(req.getContextPath() + "/addIngredientToRecipe");
     }
 
 }

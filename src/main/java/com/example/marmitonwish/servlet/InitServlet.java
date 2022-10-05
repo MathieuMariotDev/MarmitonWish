@@ -45,13 +45,13 @@ public class InitServlet extends HttpServlet {
                 userOptional.get());
         DaoFactory.getRecipeDao().addRecipe(recipe);
 
-        RecipeIngredient recipeIngredient = new RecipeIngredient(ingredient,recipe,100,"gramme");
+       /* RecipeIngredient recipeIngredient = new RecipeIngredient(ingredient,recipe,100,"gramme");
         RecipeIngredient recipeIngredient2 = new RecipeIngredient(ingredient2,recipe,2,"Unité");
 
         DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient);
 
         DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient2);
-
+*/
         Optional<Recipe> optionalRecipe = DaoFactory.getRecipeDao().getRecipeById(1);
 
         if (optionalRecipe.isPresent()){

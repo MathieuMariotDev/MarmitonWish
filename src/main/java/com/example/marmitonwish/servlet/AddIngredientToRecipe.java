@@ -61,7 +61,7 @@ public class AddIngredientToRecipe extends HttpServlet {
             req.setAttribute("recipe_not_found", true);
             resp.sendRedirect(req.getContextPath() + "/error");
         }
-
+        resp.sendRedirect(req.getContextPath() + "/recipes");
 
 
 
