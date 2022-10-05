@@ -100,7 +100,7 @@
                     </c:forEach>
                     <div class="mt-2 d-flex justify-content-around">
                         <button class="btn btn-success" id="addIngredient" type="submit">Ajoute l'ingredient</button>
-                        <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${idRecipe}"
+                        <a href="${pageContext.request.contextPath}/detailsRecipe?id=${idRecipe}"
                            class="btn btn-danger">Ne pas ajouter</a>
                 </div>
                 </div>

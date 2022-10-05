@@ -91,10 +91,10 @@ public class JpaCookedRecipeDao implements CookedRecipeDao {
     }
 
     @Override
-    public Optional<CookedRecipe> getCookedRecipeById(long id) {
+    public Optional<CookedRecipe> getCookedRecipeById(long idRecipe,long idUser) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         try {
-            Optional<CookedRecipe> cookedRecipeOptional = Optional.of(em.find(CookedRecipe.class,id));
+            Optional<CookedRecipe> cookedRecipeOptional = Optional.of(em.createQuery("SELECT u FROM CookedRecipe u WHERE u.user.id = :idUser AND u.recipe.id = :idRecipe", CookedRecipe.class).getSingleResult());
             return cookedRecipeOptional;
         }catch (RuntimeException re){
             // todo

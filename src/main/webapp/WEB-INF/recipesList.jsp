@@ -20,7 +20,7 @@
                 <p>${recipe.recipeName}</p>
               </div>
               <div class="card-footer d-flex justify-content-end">
-                <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${recipe.id}" class="boutonHome btn text-white ">Détails</a>
+                <a href="${pageContext.request.contextPath}/detailsRecipe?id=${recipe.id}" class="boutonHome btn text-white ">Détails</a>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
 
   <form action="${pageContext.request.contextPath}/auth/random" method="post">
     <input hidden name="id" value="${requestScope.idRecipe}">
-    <button class="btn btn-secondary" type="submit">Choisir une recette au hasard</button>
+    <input class="btn btn-secondary"  type="submit" value="Choisir une recette au hasard">
   </form>
 
   </div>

@@ -15,9 +15,10 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
-@WebServlet("/auth/detailsRecipe")
+@WebServlet("/detailsRecipe")
 public class DetailsRecipeServlet extends HttpServlet {
 
     @Override
@@ -49,23 +50,30 @@ public class DetailsRecipeServlet extends HttpServlet {
             // display delete button if connected user is recipe creator
             // get id of connected user
             HttpSession session = req.getSession();
-            User user = (User) session.getAttribute("user");
-            long idUser = user.getId();
+            Optional<Recipe> recipe = DaoFactory.getRecipeDao().getRecipeById(idRecipe);
+            try{
+                User user = (User) session.getAttribute("user");
+                long idUser = user.getId();
+                User userRecipe = recipe.get().getUser();
+                long idUserRecipe = userRecipe.getId();
+                if (idUser == idUserRecipe) {
+                    req.setAttribute("display_delete", true);
+                }
+                req.setAttribute("user",user);
+                // get id of user who created the recipe
+            }catch(Exception e){
+                e.printStackTrace();
+            }
 
             req.setAttribute("idRecipe", idRecipe);
 
-            // get id of user who created the recipe
-            Optional<Recipe> recipe = DaoFactory.getRecipeDao().getRecipeById(idRecipe);
-            User userRecipe = recipe.get().getUser();
-            long idUserRecipe = userRecipe.getId();
 
-            if (idUser == idUserRecipe) {
-                req.setAttribute("display_delete", true);
-            }
+
 
             req.getRequestDispatcher("/WEB-INF/detailsRecipe.jsp").forward(req, resp);
 
         } catch (Exception e) {
+            e.printStackTrace();
             resp.sendRedirect(req.getContextPath() + "/error");
             req.setAttribute("error_format_id", true);
         }

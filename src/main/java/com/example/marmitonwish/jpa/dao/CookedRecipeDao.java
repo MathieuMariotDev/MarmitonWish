@@ -15,6 +15,6 @@ public interface CookedRecipeDao {
 
     boolean updateCookedRecipe(CookedRecipe cookedRecipe);
 
-    Optional<CookedRecipe> getCookedRecipeById(long id);
+    Optional<CookedRecipe> getCookedRecipeById(long idRecipe,long idUser);
 
 }

@@ -37,14 +37,15 @@
                         </form>
 
                         <a href="${pageContext.request.contextPath}/auth/deleteRecipe?id=${requestScope.recipe.id}" class="btn btn-danger">Supprimer recette</a>
-
+                    </c:if>
+                    <c:if test="${not empty requestScope.user}">
                     <form action="${pageContext.request.contextPath}/auth/addCookedRecipe" method="post">
                         <input hidden name="id" value="${requestScope.idRecipe}">
                         <button class="btn btn-secondary" type="submit">Recette cuisinée ? Cliquez ici</button>
                     </form>
-
-
                     </c:if>
+
+
                 </div>
             </div>
         </div>
