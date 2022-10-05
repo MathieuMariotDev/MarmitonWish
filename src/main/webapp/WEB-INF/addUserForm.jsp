@@ -8,14 +8,6 @@
   <link rel="stylesheet" href="<c:url value='/css/style.css' />"/>
 </head>
 <body>
-<<<<<<< HEAD
-
-
-<div class="container-fluid row d-flex justify-content-center">
-  <jsp:include page="header.jsp"></jsp:include>
-  <h1 class="d-flex justify-content-center">Add User</h1>
-
-  <div class="row d-flex justify-content-center " >
 
   <div class="container-fluid row d-flex justify-content-center">
     <jsp:include page="header.jsp"></jsp:include>

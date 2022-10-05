@@ -37,13 +37,6 @@ public class Recipe {
         this.category = category;
     }
 
-    public List<RecipeIngredient> getRecipeIngredients() {
-        return recipeIngredients;
-    }
-
-    public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
-        this.recipeIngredients = recipeIngredients;
-    }
 
     public Recipe(String recipeName, float timeToPrepare, String dificulty, int portion, float price, LocalDateTime createDate, String preparation, String category, User user) {
         this.recipeName = recipeName;
@@ -151,5 +144,13 @@ public class Recipe {
 
     public void setCookedRecipes(List<CookedRecipe> cookedRecipes) {
         this.cookedRecipes = cookedRecipes;
+    }
+
+    public List<RecipeIngredient> getRecipeIngredients() {
+        return recipeIngredients;
+    }
+
+    public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
     }
 }
