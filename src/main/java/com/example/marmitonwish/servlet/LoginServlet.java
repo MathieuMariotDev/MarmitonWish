@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user.get());
 
             resp.getWriter().println(session.getAttribute("user"));
-            resp.sendRedirect(req.getContextPath() + "/#");
+            resp.sendRedirect(req.getContextPath() + "/recipes");
         } else {
             req.setAttribute("error_password", "Mot de passe invalide");
             RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/login.jsp");
