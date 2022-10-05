@@ -6,6 +6,12 @@ background-color: #ff6f61;
 header{
     height: 6em;
 }
+
+.ingredientImages{
+    width: 3em;
+    height: 3em;
+}
+
 footer{
     background-color: #ff6f61;
 }

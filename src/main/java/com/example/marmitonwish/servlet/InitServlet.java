@@ -50,8 +50,8 @@ public class InitServlet extends HttpServlet {
 
         DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient);
 
-        DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient2);
-*/
+        DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient2);*/
+
         Optional<Recipe> optionalRecipe = DaoFactory.getRecipeDao().getRecipeById(1);
 
         if (optionalRecipe.isPresent()){
