@@ -2,7 +2,6 @@ package com.example.marmitonwish.jpa.dao;
 
 import com.example.marmitonwish.jpa.PersistenceManager;
 import com.example.marmitonwish.jpa.entity.Recipe;
-import com.example.marmitonwish.jpa.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -10,19 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class JpaRecipeDao implements RecipeDao{
-
+public class JpaCookedRecipeDao implements CookedRecipe {
     @Override
-    public List<Recipe> findAll() {
+    public List<CookedRecipe> findAll() {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
-        List<Recipe> recipes = new ArrayList<>();
+        List<CookedRecipe> cookedRecipes = new ArrayList<>();
         try {
 
-            recipes = em.createQuery("SELECT u FROM recipe u",Recipe.class).getResultList();
+            cookedRecipes = em.createQuery("SELECT u FROM CookedRecipe u", CookedRecipe.class).getResultList();
             et.commit();
-            return recipes;
+            return cookedRecipes;
         }catch (RuntimeException re){
             // TODO
             et.rollback();
@@ -30,16 +28,16 @@ public class JpaRecipeDao implements RecipeDao{
         }finally {
             em.close();
         }
-        return recipes;
+        return cookedRecipes;
     }
 
     @Override
-    public boolean addRecipe(Recipe recipe) {
+    public boolean addCookedRecipe(CookedRecipe cookedRecipe) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
         try {
-            em.persist(recipe);
+            em.persist(cookedRecipe);
             et.commit();
             return true;
         }catch (RuntimeException re){
@@ -54,13 +52,13 @@ public class JpaRecipeDao implements RecipeDao{
     }
 
     @Override
-    public boolean deleteRecipe(long id) {
+    public boolean deleteCookedRecipe(long id) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
         try {
-            Recipe recipe = em.find(Recipe.class,id);
-            em.remove(recipe);
+            CookedRecipe cookedRecipe = em.find(CookedRecipe.class,id);
+            em.remove(cookedRecipe);
             et.commit();
             return true;
         }catch (RuntimeException re){
@@ -74,12 +72,12 @@ public class JpaRecipeDao implements RecipeDao{
     }
 
     @Override
-    public boolean updateRecipe(Recipe recipe) {
+    public boolean updateCookedRecipe(CookedRecipe cookedRecipe) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
         try {
-            em.merge(recipe);
+            em.merge(cookedRecipe);
             et.commit();
             return true;
         }catch (RuntimeException re){
@@ -93,11 +91,11 @@ public class JpaRecipeDao implements RecipeDao{
     }
 
     @Override
-    public Optional<Recipe> getRecipeById(long id) {
+    public Optional<CookedRecipe> getCookedRecipeById(long id) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         try {
-            Optional<Recipe> recipe = Optional.of(em.find(Recipe.class,id));
-            return recipe;
+            Optional<CookedRecipe> cookedRecipeOptional = Optional.of(em.find(CookedRecipe.class,id));
+            return cookedRecipeOptional;
         }catch (RuntimeException re){
             // todo
             re.printStackTrace();
