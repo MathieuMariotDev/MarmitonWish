@@ -22,6 +22,9 @@
                         <li class="nav-item active">
                             <a class="nav-link text-white" href="${pageContext.request.contextPath}/add_user">Inscription</a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" href="${pageContext.request.contextPath}/searchRecipe">Recherche</a>
+                        </li>
                     </ul>
                 </div>
             </c:if>

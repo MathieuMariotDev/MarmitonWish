@@ -31,7 +31,7 @@ public class RandomRecipeServlet extends HttpServlet {
 
         LocalDateTime dateMinusSixDays = localDate.minusDays(6);
 
-        //try {
+        try {
             System.out.println("COUCOUC JE SUIS ICI 2");
             for (CookedRecipe cookedRecipe : cookedRecipeList) {
                 LocalDateTime cookedRecipeDate = cookedRecipe.getDateCook();
@@ -60,10 +60,10 @@ public class RandomRecipeServlet extends HttpServlet {
 
 
 
-       /* } catch (Exception e) {
+       } catch (Exception e) {
             System.out.println("COUCOUC JE SUIS ICI 4");
             // TODO
-        }*/
+        }
     }
 }
 

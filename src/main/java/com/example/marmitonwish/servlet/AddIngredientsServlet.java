@@ -29,7 +29,7 @@ public class AddIngredientsServlet extends HttpServlet {
             Ingredient ingredient = new Ingredient(ingredientsPhoto,ingredientName);
             DaoFactory.getIngredientDao().addIngredient(ingredient);
 
-            resp.sendRedirect(req.getContextPath()+"/ingredients");
+            resp.sendRedirect(req.getContextPath()+"/addIngredients");
 
     }
 }

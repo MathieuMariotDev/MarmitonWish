@@ -52,7 +52,7 @@ public class AddIngredientToRecipeServlet extends HttpServlet {
             RecipeIngredient recipeIngredient = new RecipeIngredient(ingredient.get(),recipe.get(),quantity,unite);
             DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient);
 
-            resp.sendRedirect(req.getContextPath() + "/addIngredientToRecipe?id="+recipe.get().getId());
+            resp.sendRedirect(req.getContextPath() + "/addIngredientToRecipe?id="+idRecipe);
         }catch(NumberFormatException | NoSuchElementException e){
             req.setAttribute("recipe_not_found", true);
             resp.sendRedirect(req.getContextPath() + "/error");

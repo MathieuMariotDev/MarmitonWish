@@ -98,11 +98,15 @@ public class JpaRecipeDao implements RecipeDao{
     @Override
     public Optional<Recipe> getRecipeById(long id) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
         try {
             Optional<Recipe> recipe = Optional.of(em.find(Recipe.class,id));
+            et.commit();
             return recipe;
         }catch (RuntimeException re){
             // todo
+            et.rollback();
             re.printStackTrace();
         }finally {
             em.close();
@@ -115,15 +119,18 @@ public class JpaRecipeDao implements RecipeDao{
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         CriteriaBuilder builder = em.getCriteriaBuilder();
         List<Recipe> recipes = new ArrayList<>();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
         try {
             CriteriaQuery<Recipe> query = builder.createQuery(Recipe.class);
             Root<Recipe> root = query.from(Recipe.class);
             query.select(root).where(builder.like(root.get("recipeName").as(String.class),'%'+name+'%'));
             recipes = em.createQuery(query).getResultList();
-
+            et.commit();
             return recipes;
         }catch (RuntimeException re){
             // todo
+            et.rollback();
             re.printStackTrace();
         }finally {
             em.close();

@@ -88,11 +88,15 @@ public class JpaIngredientDao implements IngredientDao{
     @Override
     public Optional<Ingredient> getIngredientById(long id) {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
         try {
             Optional<Ingredient> ingredient = Optional.of(em.find(Ingredient.class,id));
+            et.commit();
             return ingredient;
         }catch (RuntimeException re){
             // todo
+            et.rollback();
             re.printStackTrace();
         }finally {
             em.close();

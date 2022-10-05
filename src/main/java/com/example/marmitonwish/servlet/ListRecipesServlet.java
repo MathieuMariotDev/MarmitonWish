@@ -20,11 +20,6 @@ public class ListRecipesServlet extends HttpServlet {
 
         List<Recipe> recipes = DaoFactory.getRecipeDao().findAll();
 
-        recipes.forEach(recipe -> {
-            recipe.getRecipeIngredients().forEach(recipeIngredient -> {
-                System.out.println(recipeIngredient.getIngredient().getName());
-            });
-        });
 
         req.setAttribute("recipes", recipes);
 
