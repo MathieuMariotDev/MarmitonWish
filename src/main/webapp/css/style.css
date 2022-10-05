@@ -1,8 +1,11 @@
 
 #navHeader{
-background-color: #cb9e4a;
+background-color: #ff6f61;
 }
 
 header{
     height: 6em;
+}
+footer{
+    background-color: #ff6f61;
 }
