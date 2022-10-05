@@ -6,6 +6,7 @@ import com.example.marmitonwish.jpa.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,15 +15,22 @@ public class JpaRecipeDao implements RecipeDao{
     @Override
     public List<Recipe> findAll() {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        List<Recipe> recipes = new ArrayList<>();
         try {
-            List<Recipe> recipes = em.createQuery("SELECT u FROM recipe u",Recipe.class).getResultList();
+
+            recipes = em.createQuery("SELECT u FROM recipe u", Recipe.class).getResultList();
+            et.commit();
             return recipes;
-        }catch (RuntimeException re){
+        } catch (RuntimeException re) {
             // TODO
-        }finally {
+            et.rollback();
+            re.printStackTrace();
+        } finally {
             em.close();
         }
-        return null;
+        return recipes;
     }
 
     @Override
