@@ -28,6 +28,18 @@
       </c:forEach>
     </div>
     <jsp:include page="footer.jsp"></jsp:include>
+
+  <div>
+    <%--<a href="${pageContext.request.contextPath}/auth/random" class="btn btn-success">Choisir une recette au hasard</a>
+    --%>
+
+  <form action="${pageContext.request.contextPath}/auth/random" method="post">
+    <input hidden name="id" value="${requestScope.idRecipe}">
+    <button class="btn btn-secondary" type="submit">Choisir une recette au hasard</button>
+  </form>
+
+  </div>
+
   </div>
 </body>
 </html>
