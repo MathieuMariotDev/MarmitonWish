@@ -34,7 +34,7 @@ public class DetailsRecipeServlet extends HttpServlet {
 
                 List<RecipeIngredient> recipeIngredientsList = recipe.getRecipeIngredients();
 
-                // get quantity + unit dans recipeingredient
+                // get quantity + unit in recipeingredient
                 req.setAttribute("recipeIngredients", recipeIngredientsList);
 
                 List<Ingredient> ingredientList = new ArrayList<>();
@@ -42,8 +42,7 @@ public class DetailsRecipeServlet extends HttpServlet {
                     Ingredient ingredient = recipeIngredient.getIngredient();
                     ingredientList.add(ingredient);
                 }
-                //List<Ingredient> ingredientList = recipeIngredientsList.forEach(recipeIngredient -> recipeIngredient.getIngredient());
-                // get name + photo dans ingredient
+                // get name + photo in ingredient
                 req.setAttribute("ingredients", ingredientList);
             }
 

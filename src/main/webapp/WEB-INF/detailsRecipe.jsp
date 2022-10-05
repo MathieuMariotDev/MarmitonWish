@@ -23,16 +23,20 @@
                         <p>Ingrédients :</p>
                         <c:forEach var="recipeIngredient" items="${requestScope.recipeIngredients}" varStatus="status">
                             <img class="ingredientImage"src="${requestScope.ingredients[status.index].photo}">
-                            <p>${recipeIngredient.quantity} ${recipeIngredient.unite} ${requestScope.ingredients[status.index].name}</p>
+
                         </c:forEach> <%--a completer--%>
                         <p>Préparation : ${requestScope.recipe.preparation}</p>
-                        <%--<p>Auteur : ${requestScope.recipe.user}</p>--%> <%--a modifier > get firstname + name--%>
+                        <p>Auteur : ${requestScope.recipe.user.firstname} ${requestScope.recipe.user.name}</p>
                     </div>
                     <c:if test="${requestScope.display_delete}">
+
                         <form class="d-flex justify-content-center" action="${pageContext.request.contextPath}/auth/deleteRecipe" method="post">
                             <input hidden name="id" value="${requestScope.recipe.id}">
                             <button class="btn btn-danger" type="submit">Supprimer recette</button>
                         </form>
+
+                        <a href="${pageContext.request.contextPath}/auth/deleteRecipe?id=${requestScope.recipe.id}" class="btn btn-danger">Supprimer recette</a>
+
                     </c:if>
                 </div>
             </div>
