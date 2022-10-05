@@ -43,7 +43,7 @@ public class AddCookedRecipe extends HttpServlet {
                 Recipe recipe = optionalRecipe.get();
 
                 CookedRecipe cookedRecipe = new CookedRecipe();
-                cookedRecipe.setId(recipe.getId());
+                //cookedRecipe.setId(recipe.getId()); // get id of recipe -> not ok
                 cookedRecipe.setUser(recipe.getUser());
                 cookedRecipe.setRecipe(recipe);
 
@@ -53,7 +53,7 @@ public class AddCookedRecipe extends HttpServlet {
 
                 cookedRecipe.setDateCook(localDate);
 
-                // add cookedrecipe avec la dao
+                DaoFactory.getCookedRecipeDao().addCookedRecipe(cookedRecipe);
 
             } else {
                 // TODO

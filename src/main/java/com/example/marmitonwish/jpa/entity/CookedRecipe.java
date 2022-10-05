@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 public class CookedRecipe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @ManyToOne

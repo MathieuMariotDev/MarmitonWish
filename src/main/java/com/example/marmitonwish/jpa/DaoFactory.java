@@ -23,7 +23,7 @@ public class DaoFactory {
         return new JpaRecipeIngredient();
     }
 
-    public static JpaCookedRecipeDao getCookedRecipeDao() {
+    public static CookedRecipeDao getCookedRecipeDao() {
         return new JpaCookedRecipeDao();
     }
 

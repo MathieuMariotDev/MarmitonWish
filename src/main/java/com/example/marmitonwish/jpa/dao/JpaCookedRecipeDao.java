@@ -1,7 +1,7 @@
 package com.example.marmitonwish.jpa.dao;
 
 import com.example.marmitonwish.jpa.PersistenceManager;
-import com.example.marmitonwish.jpa.entity.Recipe;
+import com.example.marmitonwish.jpa.entity.CookedRecipe;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class JpaCookedRecipeDao implements CookedRecipe {
+public class JpaCookedRecipeDao implements CookedRecipeDao {
     @Override
     public List<CookedRecipe> findAll() {
         EntityManager em = PersistenceManager.getEMF().createEntityManager();

@@ -1,9 +1,11 @@
 package com.example.marmitonwish.jpa.dao;
 
+import com.example.marmitonwish.jpa.entity.CookedRecipe;
+
 import java.util.List;
 import java.util.Optional;
 
-public interface CookedRecipe {
+public interface CookedRecipeDao {
 
     List<CookedRecipe> findAll();
 
