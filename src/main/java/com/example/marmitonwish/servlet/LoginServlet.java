@@ -49,29 +49,3 @@ public class LoginServlet extends HttpServlet {
 
     }
 }
-/* If bug */
-            /*if (user.isPresent()) {
-                // check password
-                String userMdp = user.get().getMdp(); // password associated to email
-
-                if (userMdp.equals(mdp)) {
-
-                    HttpSession session = req.getSession();
-                    session.setAttribute("user", user);
-
-                    resp.getWriter().println(session.getAttribute("user"));
-
-                    resp.sendRedirect(req.getContextPath() + "/#");
-
-                } else {
-
-                    req.setAttribute("error_password", "Mot de passe invalide");
-                    RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/login.jsp");
-                    rd.forward(req, resp);
-                }
-
-            } else {
-                req.setAttribute("error_email", "Email invalide");
-                RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/login.jsp");
-                rd.forward(req, resp);
-            }*/

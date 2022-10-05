@@ -8,53 +8,7 @@
     <link rel="stylesheet" href="<c:url value='/css/style.css' />"/>
 </head>
 <body>
-<<<<<<< HEAD
 
-
-<div class="container-fluid row d-flex justify-content-center">
-    <jsp:include page="header.jsp"></jsp:include>
-    <h1 class="d-flex justify-content-center">Add recipe</h1>
-
-    <div class="row d-flex justify-content-center " >
-
-        <form  class=" col-3 mb-5 mt-5 bg-white d-flex flex-column align-items-center  border border-secondary rounded" action="${pageContext.request.contextPath}/addRecipe" method="POST">
-            <div class="field d-flex flex-column align-items-start">
-                <label for="recipeName"></label>
-                <input id="recipeName" type="text" name="recipeName" placeholder="nom">
-            </div>
-            <div class="field d-flex flex-column align-items-start">
-                <label for="timeToPrepare"></label>
-                <input id="timeToPrepare" type="number" name="timeToPrepare" placeholder="temps de preparation">
-            </div>
-            <div class="field d-flex flex-column align-items-start">
-<<<<<<< HEAD
-                <label for="dificulty">difficulte</label>
-                <input id="dificulty" type="text" name="dificulty">
-
-=======
-                <label for="dificulty"></label>
-                <input id="dificulty" type="text" name="dificulty" placeholder="difficulte">
->>>>>>> 44b58921579a40525e49b118d1ebe23ec2b86cc6
-            </div>
-            <div class="field d-flex flex-column align-items-start">
-                <label for="portion"></label>
-                <input id="portion" type="number" name="portion" placeholder="portion">
-            </div>
-            <div class="field d-flex flex-column align-items-start">
-                <label for="price"></label>
-                <input id="price" type="number" name="price" placeholder="prix">
-            </div>
-            <div class="field d-flex flex-column align-items-start">
-                <label for="preparation"></label>
-                <input id="preparation" type="text" name="preparation" placeholder="preparation">
-            </div>
-
-            <button class="bg-primary mt-3 mb-3 rounded" type="submit">Create</button>
-
-
-        </form>
-
-=======
     <div class="container-fluid row d-flex justify-content-center">
         <jsp:include page="header.jsp"></jsp:include>
         <h1 class="d-flex justify-content-center">Add recipe</h1>
@@ -91,7 +45,7 @@
 
         </div>
         <jsp:include page="footer.jsp"></jsp:include>
->>>>>>> 9c6a87bd4e1964812e83e28b7790377b902f8e8f
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
