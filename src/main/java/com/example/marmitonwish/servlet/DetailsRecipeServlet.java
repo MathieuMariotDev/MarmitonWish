@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@WebServlet("/detailsRecipe")
+@WebServlet("/auth/detailsRecipe")
 public class DetailsRecipeServlet extends HttpServlet {
 
     @Override
