@@ -30,12 +30,19 @@
                     </div>
                     <c:if test="${requestScope.display_delete}">
 
+
                         <form class="d-flex justify-content-center" action="${pageContext.request.contextPath}/auth/deleteRecipe" method="post">
                             <input hidden name="id" value="${requestScope.recipe.id}">
                             <button class="btn btn-danger" type="submit">Supprimer recette</button>
                         </form>
 
                         <a href="${pageContext.request.contextPath}/auth/deleteRecipe?id=${requestScope.recipe.id}" class="btn btn-danger">Supprimer recette</a>
+
+                    <form action="${pageContext.request.contextPath}/auth/addCookedRecipe" method="post">
+                        <input hidden name="id" value="${requestScope.idRecipe}">
+                        <button class="btn btn-secondary" type="submit">Recette cuisinée ? Cliquez ici</button>
+                    </form>
+
 
                     </c:if>
                 </div>
