@@ -18,4 +18,7 @@ public interface RecipeDao {
     Optional<Recipe> getRecipeById(long id);
 
 
+    Optional<Recipe> getByName(String name);
+
+    Optional<Recipe> getByCategory(String category);
 }

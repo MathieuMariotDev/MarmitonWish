@@ -5,6 +5,7 @@ import com.example.marmitonwish.jpa.entity.Recipe;
 import com.example.marmitonwish.jpa.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -89,6 +90,40 @@ public class JpaRecipeDao implements RecipeDao{
         EntityManager em = PersistenceManager.getEMF().createEntityManager();
         try {
             Optional<Recipe> recipe = Optional.of(em.find(Recipe.class,id));
+            return recipe;
+        }catch (RuntimeException re){
+            // todo
+            re.printStackTrace();
+        }finally {
+            em.close();
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Recipe> getByName(String name) {
+        EntityManager em = PersistenceManager.getEMF().createEntityManager();
+        try {
+            Query query = em.createQuery("SELECT u FROM recipe u WHERE u.recipeName = :name");
+            query.setParameter("name",name);
+            Optional<Recipe> recipe = Optional.of((Recipe) query.getSingleResult());
+            return recipe;
+        }catch (RuntimeException re){
+            // todo
+            re.printStackTrace();
+        }finally {
+            em.close();
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Recipe> getByCategory(String category) {
+        EntityManager em = PersistenceManager.getEMF().createEntityManager();
+        try {
+            Query query = em.createQuery("SELECT u FROM recipe u WHERE u.category = :category");
+            query.setParameter("category",category);
+            Optional<Recipe> recipe = Optional.of((Recipe) query.getSingleResult());
             return recipe;
         }catch (RuntimeException re){
             // todo
