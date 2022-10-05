@@ -132,4 +132,12 @@ public class Recipe {
     public void setCookedRecipes(List<CookedRecipe> cookedRecipes) {
         this.cookedRecipes = cookedRecipes;
     }
+
+    public List<RecipeIngredient> getRecipeIngredients() {
+        return recipeIngredients;
+    }
+
+    public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
+    }
 }
