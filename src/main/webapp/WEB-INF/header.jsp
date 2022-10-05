@@ -22,6 +22,7 @@
                     </li>
                 </ul>
             </div>
+
             </c:if>
             <c:if test="${! empty sessionScope.user}">
             <div class="collapse navbar-collapse" id="navbarResponsive">

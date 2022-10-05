@@ -30,7 +30,10 @@ public class InitServlet extends HttpServlet {
         Ingredient ingredient4 = new Ingredient("Crème fraiche");
 
         DaoFactory.getIngredientDao().addIngredient(ingredient);
+        DaoFactory.getIngredientDao().addIngredient(ingredient1);
         DaoFactory.getIngredientDao().addIngredient(ingredient2);
+        DaoFactory.getIngredientDao().addIngredient(ingredient3);
+        DaoFactory.getIngredientDao().addIngredient(ingredient4);
 
         User user =  new User("Mathieu","Mariot","0123","math.mariot@gmail.com","www.maPhoto.com");
         DaoFactory.getUserDao().addUser(user);
@@ -40,17 +43,17 @@ public class InitServlet extends HttpServlet {
 
 
 
-        Recipe  recipe = new Recipe("Soupe veloutée de potimarron et pommes de terre",10,"Facil",3,5, LocalDateTime.now(),
+       /* Recipe  recipe = new Recipe("Soupe veloutée de potimarron et pommes de terre",10,"Facil",3,5, LocalDateTime.now(),
                 "Enlever l'écorce et les pépins du potimarron (il n'est pas obligatoire de le peler, mais dans ce cas, le choisir bio et bien le laver) puis couper la chair en gros morceaux.,Eplucher les pommes de terre puis les couper en gros morceaux.,Faire revenir les oignons et l'ail hachés dans un peu de beurre à feu doux.",null,
                 userOptional.get());
-        DaoFactory.getRecipeDao().addRecipe(recipe);
+        DaoFactory.getRecipeDao().addRecipe(recipe);*/
 
-        RecipeIngredient recipeIngredient = new RecipeIngredient(ingredient,recipe,100,"gramme");
+        /*RecipeIngredient recipeIngredient = new RecipeIngredient(ingredient,recipe,100,"gramme");
         RecipeIngredient recipeIngredient2 = new RecipeIngredient(ingredient2,recipe,2,"Unité");
 
         DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient);
 
-        DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient2);
+        DaoFactory.getRecipeIngredientDao().addRecipeIngredient(recipeIngredient2);*/
 
         Optional<Recipe> optionalRecipe = DaoFactory.getRecipeDao().getRecipeById(1);
 

@@ -24,11 +24,24 @@
           <button class="bg-primary mt-3 mb-3 rounded" type="submit">Creer</button>
         </form>
       </div>
+<<<<<<< HEAD
       <jsp:include page="footer.jsp"></jsp:include>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
 
+=======
+      <div class="field d-flex flex-column align-items-start">
+        <label for="ingredientsPhoto">photo</label>
+        <input id="ingredientsPhoto" type="text" name="ingredientsPhoto">
+      </div>
+      <button class="bg-primary mt-3 mb-3 rounded" type="submit">Create</button>
+    </form>
+
+  </div>
+
+</div>
+>>>>>>> 03e95d5e321237366742c5171585417eaf2008c9
 </body>
 </html>

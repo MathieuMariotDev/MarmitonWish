@@ -2,7 +2,6 @@ package com.example.marmitonwish.servlet;
 
 import com.example.marmitonwish.jpa.DaoFactory;
 import com.example.marmitonwish.jpa.entity.Ingredient;
-import com.example.marmitonwish.jpa.entity.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/addIngredients")
-public class AddIngredients extends HttpServlet {
+public class AddIngredientsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

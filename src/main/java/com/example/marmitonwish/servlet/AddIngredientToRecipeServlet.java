@@ -5,24 +5,20 @@ import com.example.marmitonwish.jpa.DaoFactory;
 import com.example.marmitonwish.jpa.entity.Ingredient;
 import com.example.marmitonwish.jpa.entity.Recipe;
 import com.example.marmitonwish.jpa.entity.RecipeIngredient;
-import com.example.marmitonwish.jpa.entity.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import static com.example.marmitonwish.jpa.DaoFactory.getIngredientDao;
-
 @WebServlet("/addIngredientToRecipe")
-public class AddIngredientToRecipe extends HttpServlet {
+public class AddIngredientToRecipeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -61,10 +57,5 @@ public class AddIngredientToRecipe extends HttpServlet {
             req.setAttribute("recipe_not_found", true);
             resp.sendRedirect(req.getContextPath() + "/error");
         }
-        resp.sendRedirect(req.getContextPath() + "/recipes");
-
-
-
-
     }
 }
