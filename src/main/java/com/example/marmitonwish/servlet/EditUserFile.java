@@ -35,10 +35,11 @@ public class EditUserFile extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = null;
        try{
            long id = Long.parseLong(req.getParameter("userId"));
            Optional<User> userOptional = DaoFactory.getUserDao().getUserById(id);
-           User user = userOptional.get();
+           user = userOptional.get();
 
            String userName = req.getParameter("newName");
            String firstname = req.getParameter("newFirstName");
@@ -56,7 +57,6 @@ public class EditUserFile extends HttpServlet {
            resp.sendRedirect(req.getContextPath() + "/error");
            req.setAttribute("user_not_found", true);
        }
-
-        resp.sendRedirect(req.getContextPath()+"/detailsUser");
+        resp.sendRedirect(req.getContextPath()+"/detailsUser?id="+user.getId());
     }
 }

@@ -46,7 +46,7 @@ public class AddRecipeServlet extends HttpServlet {
           LocalDateTime localDate = LocalDateTime.now();
           resp.getWriter().println(localDate);
 
-          Recipe recipe = new Recipe(recipeName, timeToPrepare, dificulty, portion, price, localDate, preparation, user );
+          Recipe recipe = new Recipe(recipeName, timeToPrepare, dificulty, portion, price, localDate, preparation,null, user );
 
 
           DaoFactory.getRecipeDao().addRecipe(recipe);
@@ -55,7 +55,7 @@ public class AddRecipeServlet extends HttpServlet {
           req.setAttribute("error_format_id", true);
         }
 
-        resp.sendRedirect(req.getContextPath() + "/recipes");
+        resp.sendRedirect(req.getContextPath() + "/addIngredientToRecipe");
     }
 
 }

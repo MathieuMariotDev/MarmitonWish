@@ -23,10 +23,28 @@ public class Recipe {
 
     float price;
 
+    String category;
+
     public Recipe() {
     }
 
-    public Recipe(String recipeName, float timeToPrepare, String dificulty, int portion, float price, LocalDateTime createDate, String preparation, User user) {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public List<RecipeIngredient> getRecipeIngredients() {
+        return recipeIngredients;
+    }
+
+    public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
+    }
+
+    public Recipe(String recipeName, float timeToPrepare, String dificulty, int portion, float price, LocalDateTime createDate, String preparation, String category, User user) {
         this.recipeName = recipeName;
         this.timeToPrepare = timeToPrepare;
         this.dificulty = dificulty;
@@ -34,6 +52,7 @@ public class Recipe {
         this.price = price;
         this.createDate = createDate;
         this.preparation = preparation;
+        this.category = category;
         this.user = user;
     }
 
@@ -46,11 +65,11 @@ public class Recipe {
     @ManyToOne
     User user;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe",fetch=FetchType.EAGER)
     List<CookedRecipe> cookedRecipes;
 
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe",fetch=FetchType.EAGER)
     List<RecipeIngredient> recipeIngredients;
 
     public Long getId() {

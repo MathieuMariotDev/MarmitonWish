@@ -27,7 +27,7 @@
           <form action="${pageContext.request.contextPath}/deleteUser" method="post">
             <input hidden name="id" value="${requestScope.user.id}">
             <button class="btn btn-secondary" type="submit">Supprimer profil</button>
-            <a href="${pageContext.request.contextPath}/edit_user?id=${requestScope.user.id}"
+            <a href="${pageContext.request.contextPath}/auth/edit_user?id=${requestScope.user.id}"
                class="btn btn-primary me-2">Edit</a>
           </form>
           <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.

@@ -17,29 +17,34 @@
 
         <form  class=" col-3 mb-5 mt-5 bg-white d-flex flex-column align-items-center  border border-secondary rounded" action="${pageContext.request.contextPath}/addRecipe" method="POST">
             <div class="field d-flex flex-column align-items-start">
-                <label for="recipeName">nom </label>
-                <input id="recipeName" type="text" name="recipeName">
+                <label for="recipeName"></label>
+                <input id="recipeName" type="text" name="recipeName" placeholder="nom">
             </div>
             <div class="field d-flex flex-column align-items-start">
-                <label for="timeToPrepare">temps de preparation</label>
-                <input id="timeToPrepare" type="number" name="timeToPrepare">
+                <label for="timeToPrepare"></label>
+                <input id="timeToPrepare" type="number" name="timeToPrepare" placeholder="temps de preparation">
             </div>
             <div class="field d-flex flex-column align-items-start">
+<<<<<<< HEAD
                 <label for="dificulty">difficulte</label>
                 <input id="dificulty" type="text" name="dificulty">
 
+=======
+                <label for="dificulty"></label>
+                <input id="dificulty" type="text" name="dificulty" placeholder="difficulte">
+>>>>>>> 44b58921579a40525e49b118d1ebe23ec2b86cc6
             </div>
             <div class="field d-flex flex-column align-items-start">
-                <label for="portion">portion</label>
-                <input id="portion" type="number" name="portion">
+                <label for="portion"></label>
+                <input id="portion" type="number" name="portion" placeholder="portion">
             </div>
             <div class="field d-flex flex-column align-items-start">
-                <label for="price">prix</label>
-                <input id="price" type="number" name="price">
+                <label for="price"></label>
+                <input id="price" type="number" name="price" placeholder="prix">
             </div>
             <div class="field d-flex flex-column align-items-start">
-                <label for="preparation">preparation</label>
-                <input id="preparation" type="text" name="preparation">
+                <label for="preparation"></label>
+                <input id="preparation" type="text" name="preparation" placeholder="preparation">
             </div>
 
             <button class="bg-primary mt-3 mb-3 rounded" type="submit">Create</button>

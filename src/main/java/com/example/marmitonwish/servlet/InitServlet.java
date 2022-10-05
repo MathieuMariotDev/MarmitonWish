@@ -41,7 +41,7 @@ public class InitServlet extends HttpServlet {
 
 
         Recipe  recipe = new Recipe("Soupe veloutée de potimarron et pommes de terre",10,"Facil",3,5, LocalDateTime.now(),
-                "Enlever l'écorce et les pépins du potimarron (il n'est pas obligatoire de le peler, mais dans ce cas, le choisir bio et bien le laver) puis couper la chair en gros morceaux.,Eplucher les pommes de terre puis les couper en gros morceaux.,Faire revenir les oignons et l'ail hachés dans un peu de beurre à feu doux.",
+                "Enlever l'écorce et les pépins du potimarron (il n'est pas obligatoire de le peler, mais dans ce cas, le choisir bio et bien le laver) puis couper la chair en gros morceaux.,Eplucher les pommes de terre puis les couper en gros morceaux.,Faire revenir les oignons et l'ail hachés dans un peu de beurre à feu doux.",null,
                 userOptional.get());
         DaoFactory.getRecipeDao().addRecipe(recipe);
 
