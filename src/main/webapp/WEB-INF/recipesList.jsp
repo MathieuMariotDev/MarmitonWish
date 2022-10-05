@@ -5,46 +5,29 @@
   <title>Recettes</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="<c:url value='/css/style.css'/>"/>
 </head>
 <body>
-
-<div class="container">
-
-  <h1>Liste de recettes</h1>
-
-  <div class = "row">
-
-    <c:forEach items="${requestScope.recipes}" var="recipe">
-      <div class="col-3">
-        <div class = "card">
-          <div class="card-body">
-            <div class="card-text">
-              <p>${recipe.recipeName}</p>
+  <div class="container-fluid row d-flex justify-content-center">
+    <jsp:include page="header.jsp"></jsp:include>
+    <h1 class="d-flex mb-5 justify-content-center">Liste de recettes</h1>
+    <div class = "row mb-5 d-flex justify-content-center">
+      <c:forEach items="${requestScope.recipes}" var="recipe">
+        <div class="col-3  mt-5  d-flex justify-content-center">
+          <div class = "card">
+            <div class="card-body d-flex flex-column align-items-center">
+              <div class="card-text">
+                <p>${recipe.recipeName}</p>
+              </div>
+              <div class="card-footer d-flex justify-content-end">
+                <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${recipe.id}" class="boutonHome btn text-white ">Détails</a>
+              </div>
             </div>
-
-            <%--
-            <div class="card-footer d-flex justify-content-end">
-              <a href="${pageContext.request.contextPath}/auth/editCountry?id=${country.id}" class="btn btn-primary">Edit</a>
-
-              <form action="${pageContext.request.contextPath}/auth/deleteCountry" method="post">
-                <input hidden name="idCountry" value="${country.id}">
-                <button class="btn btn-secondary" type="submit">Delete</button>
-              </form>
-            --%>
-
-              <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${recipe.id}" class="btn btn-success">Détails</a>
-            </div>
-
-
           </div>
         </div>
-      </div>
-    </c:forEach>
-
+      </c:forEach>
+    </div>
+    <jsp:include page="footer.jsp"></jsp:include>
   </div>
-
-</div>
-
 </body>
 </html>

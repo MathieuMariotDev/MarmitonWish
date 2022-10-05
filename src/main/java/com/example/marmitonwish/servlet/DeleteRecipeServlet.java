@@ -19,30 +19,30 @@ public class DeleteRecipeServlet  extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // get id of connected user
-        HttpSession session = req.getSession();
-        session.getAttribute("user");
-
         String idStr = req.getParameter("id");
 
         try {
             long idRecipe = Long.parseLong(idStr);
             req.setAttribute("idRecipe", idRecipe);
 
-            // get id of user who created the recipe
-            Optional<Recipe> recipe = DaoFactory.getRecipeDao().getRecipeById(idRecipe);
-            User userRecipe = recipe.get().getUser();
-            long idUserRecipe = userRecipe.getId();
+        } catch (NumberFormatException e) {
+            req.setAttribute("error_format_id", true);
+        }
 
-            if (idRecipe == idUserRecipe) {
-                RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/removeRecipe.jsp");
-                rd.forward(req, resp);
-            }
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/removeRecipe.jsp");
+        rd.forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String idStr = req.getParameter("id");
+
+        try {
+            long idDelete = Long.parseLong(idStr);
+
+            DaoFactory.getRecipeDao().deleteRecipe(idDelete);
+
+            resp.sendRedirect(req.getContextPath() + "/recipes");
 
         } catch (NumberFormatException e) {
             resp.sendRedirect(req.getContextPath() + "/error");
