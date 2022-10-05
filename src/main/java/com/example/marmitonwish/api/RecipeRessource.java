@@ -33,10 +33,10 @@ public class RecipeRessource {
     }
 
     @GET
-    @Path("/{islandId}")
+    @Path("/{recipesId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getIslandById(@PathParam("islandId") long idParam) {
+    public Response getIslandById(@PathParam("recipesId") long idParam) {
         Optional<Recipe> optionalIsland = recipeDao.getRecipeById(idParam);
 
         if (optionalIsland.isPresent()) {
@@ -67,10 +67,10 @@ public class RecipeRessource {
 
 
     @PUT
-    @Path("/{islandId}")
+    @Path("/{recipesId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("islandId") long idParam, Recipe dto) {
+    public Response update(@PathParam("recipesId") long idParam, Recipe dto) {
         Optional<Recipe> optionalRecipe = recipeDao.getRecipeById(idParam);
         if (optionalRecipe.isPresent()) {
             new JpaRecipeDao().updateRecipe(new Recipe( dto.getRecipeName(), dto.getTimeToPrepare(), dto.getPreparation(),
@@ -85,8 +85,8 @@ public class RecipeRessource {
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/{islandId}")
-    public Response delete(@PathParam("islandId") long idParam) {
+    @Path("/{recipesId}")
+    public Response delete(@PathParam("recipesId") long idParam) {
         new JpaRecipeDao().deleteRecipe(idParam);
         return Response.noContent().build();
     }

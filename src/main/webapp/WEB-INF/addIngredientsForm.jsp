@@ -3,9 +3,10 @@
 <html>
 <head>
   <title>Add Ingredients</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
   <link rel="stylesheet" href="<c:url value='/css/style.css'/>"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="container-fluid row d-flex justify-content-center">
@@ -26,9 +27,18 @@
       </div>
       <jsp:include page="footer.jsp"></jsp:include>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-            crossorigin="anonymous"></script>
+    <div class="dropdown">
+      <button class="btn btn-white dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Menu
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/addRecipe">Creer une recette</a></li>
+        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/addIngredients">Creer un aliment</a></li>
+        <li><a class="dropdown-item" href="#">Voir aliments</a></li>
+        <li><a class="dropdown-item" href="#">Voir vos recettes</a></li>
+      </ul>
+    </div>
 
+</body>
 </body>
 </html>

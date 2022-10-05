@@ -22,6 +22,17 @@
                     </li>
                 </ul>
             </div>
+                <div class="dropdown">
+                    <button class="btn btn-white dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/addRecipe">Creer une recette</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/addIngredients">Creer un aliment</a></li>
+                        <li><a class="dropdown-item" href="#">Voir aliments</a></li>
+                        <li><a class="dropdown-item" href="#">Voir vos recettes</a></li>
+                    </ul>
+                </div>
             </c:if>
             <c:if test="${! empty sessionScope.user}">
             <div class="collapse navbar-collapse" id="navbarResponsive">
