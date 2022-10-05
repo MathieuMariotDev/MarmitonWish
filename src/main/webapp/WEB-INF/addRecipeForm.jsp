@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="<c:url value='/css/style.css'/>"/>
 </head>
 <body>
-
     <div class="container-fluid row d-flex justify-content-center">
         <jsp:include page="header.jsp"></jsp:include>
         <h1 class="d-flex justify-content-center">Add recipe</h1>

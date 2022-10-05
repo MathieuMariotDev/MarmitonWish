@@ -24,6 +24,7 @@ public class JpaRecipeDao implements RecipeDao{
         List<Recipe> recipes = new ArrayList<>();
         try {
 
+<<<<<<< HEAD
              recipes = em.createQuery("SELECT u FROM recipe u",Recipe.class).getResultList();
             et.commit();
              return recipes;
@@ -32,6 +33,16 @@ public class JpaRecipeDao implements RecipeDao{
             et.rollback();
             re.printStackTrace();
         }finally {
+=======
+            recipes = em.createQuery("SELECT u FROM recipe u", Recipe.class).getResultList();
+            et.commit();
+            return recipes;
+        } catch (RuntimeException re) {
+            // TODO
+            et.rollback();
+            re.printStackTrace();
+        } finally {
+>>>>>>> c4b88646599657f20490685c8d828bd4b74a27c0
             em.close();
         }
         return recipes;

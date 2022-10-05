@@ -23,7 +23,6 @@ public class DetailsRecipeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idStr = req.getParameter("id");
-
         try {
             // recipe + ingredients info
             long idRecipe = Long.parseLong(idStr);
