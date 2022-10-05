@@ -21,6 +21,10 @@
                     <input id="recipeName" type="text" name="recipeName">
                 </div>
                 <div class="field d-flex flex-column align-items-start">
+                    <label for="category">Category : </label>
+                    <input id="category" type="text" name="category">
+                </div>
+                <div class="field d-flex flex-column align-items-start">
                     <label for="timeToPrepare">temps de preparation</label>
                     <input id="timeToPrepare" type="number" name="timeToPrepare">
                 </div>

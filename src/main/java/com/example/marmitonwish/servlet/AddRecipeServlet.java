@@ -41,12 +41,12 @@ public class AddRecipeServlet extends HttpServlet {
           String preparation = req.getParameter("preparation");
           HttpSession session = req.getSession();
           User user = (User) session.getAttribute("user");
-
+          String category =  req.getParameter("category");
           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
           LocalDateTime localDate = LocalDateTime.now();
           resp.getWriter().println(localDate);
 
-          Recipe recipe = new Recipe(recipeName, timeToPrepare, dificulty, portion, price, localDate, preparation,null, user );
+          Recipe recipe = new Recipe(recipeName, timeToPrepare, dificulty, portion, price, localDate, preparation,category, user );
 
 
 
