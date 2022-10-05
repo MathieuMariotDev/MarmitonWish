@@ -2,6 +2,7 @@ package com.example.marmitonwish.jpa.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="ingredient")
@@ -27,8 +28,8 @@ public class Ingredient {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "ingredient")
-    List<RecipeIngredient> recipeIngredients;
+    @OneToMany(mappedBy = "ingredient",fetch=FetchType.EAGER)
+    List<RecipeIngredient> recipeIngredients = new ArrayList<>();
 
     public Long getId() {
         return id;
