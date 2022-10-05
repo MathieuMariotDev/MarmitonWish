@@ -14,10 +14,8 @@
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-
+<div class="container-fluid">
     <div class="card mt-5">
-
         <form action="" method="post">
             <div class="row">
                 <div class="col">
@@ -59,9 +57,6 @@
             </div>
             <button class="btn btn-success" id="addIngredient" type="submit">Ajoute l'ingredient</button>
             <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${idRecipe}" class="btn btn-danger">Ne pas ajouter d'autre ingredient</a>
-
-
-
         </form>
     </div>
 

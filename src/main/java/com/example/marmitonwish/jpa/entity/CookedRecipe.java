@@ -1,5 +1,6 @@
 package com.example.marmitonwish.jpa.entity;
 
+import com.example.marmitonwish.model.CookedRecipeDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,6 @@ public class CookedRecipe {
     User user;
 
     @ManyToOne
-    @JoinColumn(name = "recipe_id")
     Recipe recipe;
 
     LocalDateTime dateCook;
@@ -27,6 +27,12 @@ public class CookedRecipe {
         this.recipe = recipe;
         this.dateCook = dateCook;
     }
+
+    public CookedRecipeDto cookedRecipeToDto(){
+        CookedRecipeDto cookedRecipeDto = new CookedRecipeDto(this.id,this.user,this.recipe,this.dateCook);
+        return cookedRecipeDto;
+    }
+
 
     public Long getId() {
         return id;

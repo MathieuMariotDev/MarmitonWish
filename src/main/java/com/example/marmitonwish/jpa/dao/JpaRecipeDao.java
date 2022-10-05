@@ -23,15 +23,14 @@ public class JpaRecipeDao implements RecipeDao{
         et.begin();
         List<Recipe> recipes = new ArrayList<>();
         try {
-
-             recipes = em.createQuery("SELECT u FROM recipe u",Recipe.class).getResultList();
+            recipes = em.createQuery("SELECT u FROM recipe u",Recipe.class).getResultList();
             et.commit();
-             return recipes;
+            return recipes;
         }catch (RuntimeException re){
             // TODO
             et.rollback();
             re.printStackTrace();
-        }finally {
+        } finally {
             em.close();
         }
         return recipes;
