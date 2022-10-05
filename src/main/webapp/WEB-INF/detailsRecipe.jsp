@@ -29,10 +29,14 @@
                         <c:forEach var="recipeIngredient" items="${requestScope.recipeIngredients}" varStatus="status">
                             <img src="${requestScope.ingredients[status.index].photo}">
                             <p>${recipeIngredient.quantity} ${recipeIngredient.unite} ${requestScope.ingredients[status.index].name}</p>
-                        </c:forEach> <%--a completer--%>
+                        </c:forEach>
+                        <%--<c:forEach items="${requestScope.recipe.recipeIngredients}" var="recipeIngredients">
+                            <img src="${requestScope.recipeIngredients.ingredients.photo}">
+                            <p>${requestScope.recipeIngredients.quantity} ${requestScope.recipeIngredients.unite} ${requestScope.recipeIngredients.ingredients.name}</p>
+                        </c:forEach>--%> <%--try to simplify code--%>
 
                         <p>Préparation : ${requestScope.recipe.preparation}</p>
-                        <%--<p>Auteur : ${requestScope.recipe.user}</p>--%> <%--a modifier > get firstname + name--%>
+                        <p>Auteur : ${requestScope.recipe.user.firstname} ${requestScope.recipe.user.name}</p>
                     </div>
 
                     <c:if test="${requestScope.display_delete}">
