@@ -32,12 +32,16 @@ public class DetailsRecipeServlet extends HttpServlet {
 
                 List<RecipeIngredient> recipeIngredientsList = recipe.getRecipeIngredients();
 
+                // get quantity + unit dans recipeingredient
+                req.setAttribute("recipeIngredients", recipeIngredientsList);
+
                 List<Ingredient> ingredientList = new ArrayList<>();
                 for (RecipeIngredient recipeIngredient : recipeIngredientsList) {
                     Ingredient ingredient = recipeIngredient.getIngredient();
                     ingredientList.add(ingredient);
                 }
                 //List<Ingredient> ingredientList = recipeIngredientsList.forEach(recipeIngredient -> recipeIngredient.getIngredient());
+                // get name + photo dans ingredient
                 req.setAttribute("ingredients", ingredientList);
             }
 

@@ -13,7 +13,7 @@
 
     <div class = "row">
 
-        <div class="col-3">
+        <div class="col-12">
             <div class = "card">
                 <div class="card-body">
                     <div class="card-text">
@@ -24,12 +24,13 @@
                         <p>Prix : ${requestScope.recipe.price}</p>
                         <p>Date de création : ${requestScope.recipe.createDate}</p>
                         <p>Ingrédients :</p>
-                        <c:forEach items="${requestScope.ingredients}" var="ingredient">
-                                <p>ingredient.name</p>
-
+                        <c:forEach var="recipeIngredient" items="${requestScope.recipeIngredients}" varStatus="status">
+                            <img src="${requestScope.ingredients[status.index].photo}">
+                            <p>${recipeIngredient.quantity}${recipeIngredient.unite} ${requestScope.ingredients[status.index].name}</p>
                         </c:forEach> <%--a completer--%>
+
                         <p>Préparation : ${requestScope.recipe.preparation}</p>
-                        <p>Auteur : ${requestScope.recipe.user}</p>
+                        <%--<p>Auteur : ${requestScope.recipe.user}</p>--%> <%--a modifier > get firstname + name--%>
                     </div>
 
                 </div>

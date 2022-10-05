@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="recipe")
@@ -50,8 +51,8 @@ public class Recipe {
     List<CookedRecipe> cookedRecipes;
 
 
-    @OneToMany(mappedBy = "recipe")
-    List<RecipeIngredient> recipeIngredients;
+    @OneToMany(mappedBy = "recipe", fetch=FetchType.EAGER)
+    List<RecipeIngredient> recipeIngredients = new ArrayList<>();
 
     public Long getId() {
         return id;
