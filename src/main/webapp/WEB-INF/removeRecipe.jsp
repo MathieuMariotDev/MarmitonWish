@@ -10,7 +10,7 @@
 
     <%--methode post--%>
     <form action="${pageContext.request.contextPath}/auth/deleteRecipe" method="post">
-        <input hidden value="${requestScope.idUser}" name="id">
+        <input hidden value="${requestScope.idRecipe}" name="id">
         <button type="submit">Oui</button>
     </form>
 
@@ -18,6 +18,6 @@
     <form action="${pageContext.request.contextPath}/recipes" method="get">
         <button type="submit">Non</button>
     </form>
-    <jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

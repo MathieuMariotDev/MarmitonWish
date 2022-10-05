@@ -9,15 +9,17 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<div class="container">
+<div class="container-fluid d-flex justify-content-center">
 
     <div class = "row">
 
         <div class="col-12">
             <div class = "card">
                 <div class="card-body">
+
+                    <h5 class="card-title">${requestScope.recipe.recipeName}</h5>
+
                     <div class="card-text">
-                        <h3>${requestScope.recipe.recipeName}</h3>
                         <p>Temps de préparation : ${requestScope.recipe.timeToPrepare}</p>
                         <p>Difficulté : ${requestScope.recipe.dificulty}</p>
                         <p>Portion : ${requestScope.recipe.portion}</p>
@@ -26,12 +28,20 @@
                         <p>Ingrédients :</p>
                         <c:forEach var="recipeIngredient" items="${requestScope.recipeIngredients}" varStatus="status">
                             <img src="${requestScope.ingredients[status.index].photo}">
-                            <p>${recipeIngredient.quantity}${recipeIngredient.unite} ${requestScope.ingredients[status.index].name}</p>
+                            <p>${recipeIngredient.quantity} ${recipeIngredient.unite} ${requestScope.ingredients[status.index].name}</p>
                         </c:forEach> <%--a completer--%>
 
                         <p>Préparation : ${requestScope.recipe.preparation}</p>
                         <%--<p>Auteur : ${requestScope.recipe.user}</p>--%> <%--a modifier > get firstname + name--%>
                     </div>
+
+                    <c:if test="${requestScope.display_delete}">
+                        <form action="${pageContext.request.contextPath}/auth/deleteRecipe" method="post">
+                            <input hidden name="id" value="${requestScope.recipe.id}">
+                            <button class="btn btn-danger" type="submit">Supprimer recette</button>
+                        </form>
+                    </c:if>
+
 
                 </div>
             </div>
