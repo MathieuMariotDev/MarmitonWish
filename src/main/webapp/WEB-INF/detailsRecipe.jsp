@@ -22,7 +22,8 @@
                         <p>Date de création : ${requestScope.recipe.createDate}</p>
                         <p>Ingrédients :</p>
                         <c:forEach var="recipeIngredient" items="${requestScope.recipeIngredients}" varStatus="status">
-                            <img class="ingredientImage"src="${requestScope.ingredients[status.index].photo}">
+                            <img src="${requestScope.ingredients[status.index].photo}">
+                            <p>${recipeIngredient.quantity} ${recipeIngredient.unite} ${requestScope.ingredients[status.index].name}</p>
 
                         </c:forEach> <%--a completer--%>
                         <p>Préparation : ${requestScope.recipe.preparation}</p>
