@@ -22,25 +22,24 @@
             <div class="card-text">
               <p>${recipe.recipeName}</p>
             </div>
-
-            <%--
-            <div class="card-footer d-flex justify-content-end">
-              <a href="${pageContext.request.contextPath}/auth/editCountry?id=${country.id}" class="btn btn-primary">Edit</a>
-
-              <form action="${pageContext.request.contextPath}/auth/deleteCountry" method="post">
-                <input hidden name="idCountry" value="${country.id}">
-                <button class="btn btn-secondary" type="submit">Delete</button>
-              </form>
-            --%>
-
               <a href="${pageContext.request.contextPath}/auth/detailsRecipe?id=${recipe.id}" class="btn btn-success">Détails</a>
             </div>
-
 
           </div>
         </div>
       </div>
     </c:forEach>
+
+  <div>
+    <%--<a href="${pageContext.request.contextPath}/auth/random" class="btn btn-success">Choisir une recette au hasard</a>
+    --%>
+
+  <form action="${pageContext.request.contextPath}/auth/random" method="post">
+    <input hidden name="id" value="${requestScope.idRecipe}">
+    <button class="btn btn-secondary" type="submit">Choisir une recette au hasard</button>
+  </form>
+
+  </div>
 
   </div>
 
